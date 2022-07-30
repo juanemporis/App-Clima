@@ -8,7 +8,7 @@
 import Foundation
 //Se creo los struc para obtener la información del JSON
 
-struct ResponseDataModel : Decodable {
+struct WeatherResponseDataModel : Decodable {
     let city: String
     let weather: [WeatherDataModel]   //Se coloco los [] ya que weather es un array
     let temperature: TemperatureDataModel
