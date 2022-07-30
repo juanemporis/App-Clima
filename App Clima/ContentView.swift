@@ -14,7 +14,7 @@ struct ContentView: View {
         Text("Hello, world!")
             .padding()
             .task {
-                await weatherViewModel.getWeather(city: "Perú")
+                await weatherViewModel.getWeather(city: "Lima")
             }
     }
 }
