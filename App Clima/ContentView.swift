@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+
+/*https://api.openweathermap.org/data/2.5/weather?q=Per%C3%BA&appid=282cf45b438b81cdadfa836729e82855*/
+
 struct ContentView: View {
     var body: some View {
         Text("Hello, world!")
@@ -19,3 +22,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
