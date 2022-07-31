@@ -12,12 +12,21 @@ struct WeatherResponseDataModel : Decodable {
     let city: String
     let weather: [WeatherDataModel]   //Se coloco los [] ya que weather es un array
     let temperature: TemperatureDataModel
+    let sun : SunModel
+    let timezone: Double
     
     enum CodingKeys: String, CodingKey {
         case city = "name"
         case weather
         case temperature = "main"
+        case sun = "sys"
+        case timezone
     }
+    struct SunModel: Decodable  {
+        let sunrise: Date
+        let sunset: Date
+    }
+    
 }
 
 struct WeatherDataModel: Decodable {
@@ -45,47 +54,47 @@ struct TemperatureDataModel: Decodable {
         case humidity
     }
 }
-/*{#
- "coord": {
-   "lon": -76,
-   "lat": -10
- },
- "weather": [
-   {
-     "id": 800,
-     "main": "Clear",
-     "description": "clear sky",
-     "icon": "01d"
-   }
- ],
- "base": "stations",
- "main": {
-   "temp": 287.2,
-   "feels_like": 286.02,
-   "temp_min": 287.2,
-   "temp_max": 287.2,
-   "pressure": 1013,
-   "humidity": 52,
-   "sea_level": 1013,
-   "grnd_level": 683
- },
- "visibility": 10000,
- "wind": {
-   "speed": 4.1,
-   "deg": 29,
-   "gust": 2.8
- },
- "clouds": {
-   "all": 10
- },
- "dt": 1659212419,
- "sys": {
-   "country": "PE",
-   "sunrise": 1659180017,
-   "sunset": 1659222023
- },
- "timezone": -18000,
- "id": 3932488,
- "name": "Peru",
- "cod": 200
-}*/
+/*
+ {
+   "coord": {
+     "lon": -77.0282,
+     "lat": -12.0432
+   },
+   "weather": [
+     {
+       "id": 804,
+       "main": "Clouds",
+       "description": "nubes",
+       "icon": "04n"
+     }
+   ],
+   "base": "stations",
+   "main": {
+     "temp": 14.14,
+     "feels_like": 13.91,
+     "temp_min": 14.14,
+     "temp_max": 14.14,
+     "pressure": 1014,
+     "humidity": 88
+   },
+   "visibility": 8000,
+   "wind": {
+     "speed": 3.6,
+     "deg": 180
+   },
+   "clouds": {
+     "all": 100
+   },
+   "dt": 1659244858,
+   "sys": {
+     "type": 1,
+     "id": 8682,
+     "country": "PE",
+     "sunrise": 1659266817,
+     "sunset": 1659308513
+   },
+   "timezone": -18000,
+   "id": 3936456,
+   "name": "Lima",
+   "cod": 200
+ }*/

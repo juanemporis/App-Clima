@@ -41,6 +41,23 @@ struct ContentView: View {
                 }
                 .symbolRenderingMode(.multicolor)
                 .foregroundColor(.white)
+                
+                Divider()
+                    .symbolRenderingMode(.multicolor)
+                    .foregroundColor(.white)
+                HStack(spacing : 32){
+                    VStack {
+                        Image(systemName: "sunrise.fill")
+                            .symbolRenderingMode(.multicolor)
+                        Text(weatherViewModel.weatherModel.sunrise, style: .time)
+                    }
+                    VStack {
+                        Image(systemName: "sunset.fill")
+                            .symbolRenderingMode(.multicolor)
+                        Text(weatherViewModel.weatherModel.sunset, style: .time)
+                    }
+                }
+                .foregroundColor(.white)
                 Divider()
                     .symbolRenderingMode(.multicolor)
                     .foregroundColor(.white)
