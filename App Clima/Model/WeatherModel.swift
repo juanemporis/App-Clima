@@ -7,7 +7,7 @@
 
 import Foundation
 
-//
+
 struct WeatherModel {
     let city : String
     let weather : String

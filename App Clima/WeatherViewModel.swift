@@ -11,7 +11,8 @@ import Foundation
 //Se encargara en realizar la petición Http
 final class WeatherViewModel : ObservableObject {
     
-    @Published var weatherResponseDataModel: WeatherResponseDataModel? //Notificara a la vista y la vista se refrescara con los nuevos datos
+    @Published var weatherModel: WeatherModel = .empty //Notificara a la vista y la vista se refrescara con los nuevos datos
+    private let weatherModelMapper: WeatherModelMapper = WeatherModelMapper()
     
     func getWeather(city: String) async {
         let url = URL(string: "http://api.openweathermap.org/data/2.5/weather?q=Lima&appid=282cf45b438b81cdadfa836729e82855")! //Se añadio el parametro city para que coja el valor de la petición http
@@ -22,7 +23,7 @@ final class WeatherViewModel : ObservableObject {
             let dataModel = try! await JSONDecoder().decode(WeatherResponseDataModel.self, from: data) //Se encargara de hacer el mapeo del JSON de la DATA a nuestro DATAMODEL
             
             DispatchQueue.main.async {
-                self.weatherResponseDataModel = dataModel //Se le asigna el DATAMODEL a esta propiedad
+                self.weatherModel = self.weatherModelMapper.mapDataModelToModel(dataModel: dataModel) //Se le asigna el DATAMODEL a esta propiedad
             }
             
         } catch {
