@@ -59,10 +59,10 @@
 				C8A372552895DFCE00D4BA81 /* App-Clima-Info.plist */,
 				C8A372422895D05A00D4BA81 /* App_ClimaApp.swift */,
 				C8A372442895D05A00D4BA81 /* ContentView.swift */,
+				C8A372532895D8C200D4BA81 /* WeatherViewModel.swift */,
 				C8A372462895D06100D4BA81 /* Assets.xcassets */,
 				C8A372482895D06100D4BA81 /* Preview Content */,
 				C8A372522895D80F00D4BA81 /* Model */,
-				C8A372532895D8C200D4BA81 /* WeatherViewModel.swift */,
 			);
 			path = "App Clima";
 			sourceTree = "<group>";
