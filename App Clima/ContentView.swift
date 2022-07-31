@@ -13,30 +13,30 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             VStack {
-                Text(weatherViewModel.weatherResponseDataModel?.city ?? "No city")
+                Text(weatherViewModel.weatherModel.city)
                     .foregroundColor(.white)
                     .font(.system(size: 70))
-                Text(weatherViewModel.weatherResponseDataModel?.weather.first?.description ?? "No Descripcion")
+                Text(weatherViewModel.weatherModel.description)
                     .font(.headline)
                     .foregroundColor(.white)
                     .padding(.bottom, 8 )
                 HStack {
-                    if let iconURL = weatherViewModel.weatherResponseDataModel?.weather.first?.iconURLString,
-                       let url = URL (string: "http://openweathermap.org/img/wn/\(iconURL)@2x.png") {
+                    if let url = weatherViewModel.weatherModel.iconURL {
                         AsyncImage(url: url) { image in
                             image
                         }placeholder: {
                             ProgressView()
                         }
                     }
-                    Text("\(weatherViewModel.weatherResponseDataModel?.temperature.currentTemperature ?? 0.0)  °")
+                    Text(weatherViewModel.weatherModel.currentTemperature)
                         .font(.system(size: 70))
                         .foregroundColor(.white)
                 }
                 .padding(.top, -20)
                 HStack(spacing: 14) {
-                    Label("\(weatherViewModel.weatherResponseDataModel?.temperature.maxTemperature ?? 0.0)°" , systemImage: "thermometer.sun.fill")
-                    Label("\(weatherViewModel.weatherResponseDataModel?.temperature.minTemperature ?? 0.0)°", systemImage: "thermometer.snowflake")
+                    Label(weatherViewModel.weatherModel.maxTemperature, systemImage: "thermometer.sun.fill")
+                    Label(weatherViewModel.weatherModel.minTemperature, systemImage:
+                        "thermometer.snowflake")
                     
                 }
                 .symbolRenderingMode(.multicolor)
@@ -47,7 +47,7 @@ struct ContentView: View {
                 Divider()
                     .foregroundColor(.white)
                     .padding()
-                Label("\(weatherViewModel.weatherResponseDataModel?.temperature.humidity ?? 0) %",systemImage: "humidity.fill")
+                Label(weatherViewModel.weatherModel.humidity,systemImage: "humidity.fill")
                     .symbolRenderingMode(.multicolor)
                     .foregroundColor(.white)
                 Spacer()
