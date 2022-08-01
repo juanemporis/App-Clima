@@ -9,19 +9,16 @@ import SwiftUI
 
 struct WeatherAddCityView: View {
     
+    @Binding var cities : [String]
+    
     @ObservedObject private var vm = WeatherAddCityView.ViewModel()
     
     var body: some View {
         
         
         VStack {
-            HStack {
-                Text("Add city")
-                    .font(.largeTitle)
-                Spacer()
-            }
-            .padding()
             
+        
             VStack {
                 TextField("Enter City", text: $vm.city)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -30,6 +27,7 @@ struct WeatherAddCityView: View {
                 Button {
                     if vm.city != "" {
                         vm.save()
+                        cities = vm.readCities()
                     }
                     
                 
@@ -49,21 +47,37 @@ struct WeatherAddCityView: View {
                         .padding()
                            
                            Spacer()
-        }
+            }
+        .navigationBarTitle("Add City")
+    
     }
 }
-
 struct WeatherAddCityView_Previews: PreviewProvider {
     static var previews: some View {
-        WeatherAddCityView()
+        Group {
+            
+            WeatherAddCityView(cities: .constant([]))
+                .padding()
+                .previewLayout(.sizeThatFits)
+            
+            WeatherAddCityView(cities: .constant([]))
+                .padding()
+                .previewLayout(.sizeThatFits)
+                .background(.black)
+                .environment(\.colorScheme, .dark)
+        }
+        
     }
 }
 
 extension WeatherAddCityView {
+    
                         class  ViewModel : ObservableObject {
+                            
                             @Published var city : String = ""
                             
                             func save() {
+                                
                                 var cities = readCities()
                                 cities.append(city)
                                 
@@ -75,9 +89,8 @@ extension WeatherAddCityView {
                             }
                             func readCities() -> [String] {
                                 let defaults = UserDefaults.standard
-                                return defaults.array(forKey: "cities") as? [String] ??
-                                [String]()
+                                return defaults.array(forKey: "cities") as? [String] ?? [String]()
                             }
                         }
-                        
-                    }
+}
+                    

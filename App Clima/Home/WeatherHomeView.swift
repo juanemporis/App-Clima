@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 struct WeatherHomeView : View{
+    
     @StateObject var vm = WeatherHomeView.ViewModel()
     
     var body: some View {
@@ -42,7 +43,7 @@ extension WeatherHomeView {
                     var header : some View {
                         HStack {
                             NavigationLink {
-                                WeatherAddCityView()
+                                WeatherAddCityView(cities: $vm.cities)
                             }label: {
                                 Image(systemName: "plus")
                             }
