@@ -10,7 +10,7 @@ import SwiftUI
 
 struct WeatherRowView : View{
     @StateObject var weatherViewModel = WeatherViewModel()
-    @State var searchText = ""
+    @State var searchText = ""         
     
     var body: some View {
         
