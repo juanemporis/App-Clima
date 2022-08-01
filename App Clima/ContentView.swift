@@ -9,23 +9,12 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var weatherViewModel = WeatherViewModel()
-    @State var searchText = ""
     
     var body: some View {
         
         ZStack {
-            NavigationView {
+            
                 VStack {
-                Text(searchText)
-                        //TextField("", text: $searchText)
-                        .searchable(text: $searchText)
-                        .navigationTitle("Clima")
-                        .onChange(of: searchText) { newValue in
-                            Task {
-                                await weatherViewModel.getWeather(city: searchText)
-                            }
-                        }
-                        
                         
                         
                     Group{
@@ -95,16 +84,13 @@ struct ContentView: View {
                     LinearGradient(colors: [.blue, . white], startPoint: .topLeading, endPoint: .bottomTrailing)
                 )
             }
-                .task {
-                    await weatherViewModel.getWeather(city: searchText)
-                }
                 
-                
+            
             }
             
             
     }
-}
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct WeatherRowView {
+struct WeatherRowView : View{
     @StateObject var weatherViewModel = WeatherViewModel()
     @State var searchText = ""
     
@@ -17,17 +17,26 @@ struct WeatherRowView {
         NavigationView {
             ScrollView {
                 HStack {
-                    TextField("Seach", text : $searchText)
+                    Text(searchText)
                         .searchable(text: $searchText)
-                        .navigationTitle("Clima")
                         .onChange(of: searchText) { newValue in
                                 Task {
                                 await weatherViewModel.getWeather(city: searchText)
                             }
                         }
+                        .navigationBarItems(leading: Button(action: {
+                            
+                        }){
+                            Image(systemName: "gearshape")
+                        }, trailing: Button(action: {
+                            
+                        }, label: {
+                            Image(systemName: "plus")
+                        }))
                 }
                 ForEach((0...20).filter({"\($0)".contains(searchText) || searchText.isEmpty }) ,id:
                 \.self) { index in
+
                     HStack {
                     Text("\(index)")
                         Spacer()
@@ -39,6 +48,7 @@ struct WeatherRowView {
                 }
             
             .navigationTitle("Clima")
+          
             
             
         }

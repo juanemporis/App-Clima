@@ -43,6 +43,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C893819628979ABE003A55FA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C893817A28977457003A55FA /* WeatherRowView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		C8A372362895D05A00D4BA81 = {
 			isa = PBXGroup;
 			children = (
@@ -65,7 +73,7 @@
 				C8A372552895DFCE00D4BA81 /* App-Clima-Info.plist */,
 				C8A372422895D05A00D4BA81 /* App_ClimaApp.swift */,
 				C8A372442895D05A00D4BA81 /* ContentView.swift */,
-				C893817A28977457003A55FA /* WeatherRowView.swift */,
+				C893819628979ABE003A55FA /* View */,
 				C8A372532895D8C200D4BA81 /* WeatherViewModel.swift */,
 				C858757828961B490089244E /* WeatherModelMapper.swift */,
 				C8A372462895D06100D4BA81 /* Assets.xcassets */,
