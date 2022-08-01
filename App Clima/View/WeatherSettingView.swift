@@ -28,35 +28,40 @@ extension TemperatureUnit {
 }
 
 struct WeatherSettingView: View {
-    @EnvironmentObject var store : Store
+    
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     @AppStorage("Unit") private var selectedUnit: TemperatureUnit = .kelvin
     var body: some View {
         
         VStack {
             
-            Picker(selection: $selectedUnit, label: Text("Select Temperature unit?")) {
+            Picker(selection: $selectedUnit, label: Text("Select Temperature unit?")){
+                
                 ForEach(TemperatureUnit.allCases, id: \.self) {
                     Text("\($0.displayText)" as String)
+                    
                 }
+            
             }
+            .pickerStyle(SegmentedPickerStyle())
+
             Spacer()
+                
         }
-        .pickerStyle(SegmentedPickerStyle())
-        .padding()
+        .background(LinearGradient(colors: [.white, .blue], startPoint: .leading, endPoint: .bottomTrailing))
+        .padding(.top , 32)
         .navigationTitle("Setting")
         .navigationBarItems(trailing: Button("Done") {
-            
             mode.wrappedValue.dismiss()
-            store.selectedUnit = selectedUnit
+            
         })
         
+}
         
+      
     }
-       
-        
-        }
-
+    
+  
 
 struct WeatherSettingView_Previews: PreviewProvider {
     static var previews: some View {

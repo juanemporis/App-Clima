@@ -11,6 +11,7 @@ import Foundation
 //Se encargara en realizar la petición Http
 final class WeatherViewModel : ObservableObject {
     
+    @Published var city : String = ""
     @Published var weatherModel: WeatherModel = .empty //Notificara a la vista y la vista se refrescara con los nuevos datos
     private let weatherModelMapper: WeatherModelMapper = WeatherModelMapper()
     
