@@ -20,7 +20,7 @@ struct WeatherModelMapper {
         
         return WeatherModel(city: dataModel.city,
                             weather: weather.main,
-                            description: "(\(weather.description)",
+                            description: "\(weather.description)",
                             iconURL: URL(string: "http://openweathermap.org/img/wn/\(weather.iconURLString)@2x.png"),
                             currentTemperature: "\(Int(temperature.currentTemperature))°",
                             minTemperature: "\(Int(temperature.minTemperature))° Min.",

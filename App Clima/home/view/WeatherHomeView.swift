@@ -17,13 +17,10 @@ struct WeatherHomeView : View{
         NavigationView {
             ScrollView {
                 ForEach (vm.cities , id: \.self) { item in
-                    NavigationLink {
-                        CityDetailsView()
-                    } label: {
+                    
                         WeatherHomeRowView (city: item)
                             .padding(.top)
                             .padding(.horizontal)
-                    }
                 }
             }
             .navigationTitle("Climas")

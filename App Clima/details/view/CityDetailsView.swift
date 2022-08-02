@@ -82,7 +82,7 @@ struct CityDetailsView: View {
                 }
             }
             .background(
-                LinearGradient(colors: [.blue, . white], startPoint: .topLeading, endPoint: .bottomTrailing)
+                LinearGradient(colors: [.yellow, .blue], startPoint: .topLeading, endPoint: .bottomTrailing)
             )
         }
     }
