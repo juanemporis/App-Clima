@@ -22,7 +22,7 @@ struct WeatherAddCityView: View {
             
             
             VStack {
-                TextField("Enter City", text: $vm.city)
+                TextField("Ingresa nombre de la ciudad", text: $vm.city)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
                 
@@ -37,7 +37,7 @@ struct WeatherAddCityView: View {
                     
                     
                 } label: {
-                    Text("Save")
+                    Text("Guardar")
                         .frame(width: 100, height: 48, alignment: .center)
                         .background(CustomColor.blue)
                         .foregroundColor(.white)
@@ -54,7 +54,7 @@ struct WeatherAddCityView: View {
             Spacer()
         }
         .padding(32)
-        .navigationBarTitle("Add City")
+        .navigationBarTitle("Agregar Ciudad")
         .background(
             LinearGradient(colors: [.white, .blue], startPoint: .topLeading, endPoint: .bottomTrailing)
         )

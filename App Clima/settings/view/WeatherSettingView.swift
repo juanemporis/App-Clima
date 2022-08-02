@@ -16,7 +16,7 @@ struct WeatherSettingView: View {
         
         VStack {
             HStack {
-                Text("Select Temperature Unit")
+                Text("Seleciona la unidad de temperatura")
                     .foregroundColor(Color(UIColor.systemGray2))
                 Spacer()
             }
@@ -32,7 +32,7 @@ struct WeatherSettingView: View {
             
         }
         .padding()
-        .navigationTitle("Settings")
+        .navigationTitle("Ajustes")
         .toolbar(content: {
             ToolbarItem(placement: .automatic) {
                 Button {
@@ -41,7 +41,7 @@ struct WeatherSettingView: View {
                         dismiss()
                     }
                 } label : {
-                    Text("Done")
+                    Text("Aplicar")
                 }
             }
         })
