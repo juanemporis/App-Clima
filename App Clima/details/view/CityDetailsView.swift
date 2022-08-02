@@ -1,50 +1,48 @@
 //
-//  ContentView.swift
+//  CityDetailsView.swift
 //  App Clima
 //
-//  Created by juan castañeda on 30/07/22.
+//  Created by juan castañeda on 1/08/22.
 //
 
 import SwiftUI
 
-struct ContentView: View {
-    @StateObject var weatherViewModel = WeatherViewModel()
+struct CityDetailsView: View {
+    
+    var data: WeatherModel?
     
     var body: some View {
-        
         ZStack {
-            
-                VStack {
-                        
-                        
-                    Group{
+            VStack {
+                Group{
                     
-                    Text(weatherViewModel.weatherModel.city)
+                    Text(data?.city ?? "")
                         .foregroundColor(.white)
                         .font(.system(size: 70))
                     
-                    Text(weatherViewModel.weatherModel.description)
+                    Text(data?.description ?? "")
                         .font(.headline)
                         .foregroundColor(.white)
                         .padding(.bottom, 8 )
                     
                     HStack {
-                        if let url = weatherViewModel.weatherModel.iconURL {
+                        if let url = data?.iconURL ?? URL(string: "") {
                             AsyncImage(url: url) { image in
                                 image
                             }placeholder: {
                                 ProgressView()
                             }
                         }
-                        Text(weatherViewModel.weatherModel.currentTemperature)
+                        Text(data?.currentTemperature ?? "")
                             .font(.system(size: 70))
                             .foregroundColor(.white)
                     }
                     .padding(.top, -20)
+                    
                     HStack(spacing: 14) {
-                        Label(weatherViewModel.weatherModel.maxTemperature, systemImage: "thermometer.sun.fill")
-                        Label(weatherViewModel.weatherModel.minTemperature, systemImage:
-                            "thermometer.snowflake")
+                        Label(data?.maxTemperature ?? "", systemImage: "thermometer.sun.fill")
+                        Label(data?.minTemperature ?? "", systemImage:
+                                "thermometer.snowflake")
                         
                     }
                     .symbolRenderingMode(.multicolor)
@@ -53,48 +51,45 @@ struct ContentView: View {
                     Divider()
                         .symbolRenderingMode(.multicolor)
                         .foregroundColor(.white)
+                    
                     HStack(spacing : 32){
                         VStack {
                             Image(systemName: "sunrise.fill")
                                 .symbolRenderingMode(.multicolor)
-                            Text(weatherViewModel.weatherModel.sunrise, style: .time)
+                            Text(data?.sunrise ?? Date(), style: .time)
                         }
                         VStack {
                             Image(systemName: "sunset.fill")
                                 .symbolRenderingMode(.multicolor)
-                            Text(weatherViewModel.weatherModel.sunset, style: .time)
+                            Text(data?.sunset ?? Date(), style: .time)
                         }
                     }
                     .foregroundColor(.white)
+                    
                     Divider()
                         .symbolRenderingMode(.multicolor)
                         .foregroundColor(.white)
+                    
                     Divider()
                         .foregroundColor(.white)
                         .padding()
-                    Label(weatherViewModel.weatherModel.humidity,systemImage: "humidity.fill")
+                    
+                    Label(data?.humidity ?? "",systemImage: "humidity.fill")
                         .symbolRenderingMode(.multicolor)
                         .foregroundColor(.white)
+                    
                     Spacer()
-                    }
                 }
-                .padding(.top, 32)
-                
-                .background(
-                    LinearGradient(colors: [.blue, . white], startPoint: .topLeading, endPoint: .bottomTrailing)
-                )
             }
-                
-            
-            }
-            
-            
-    }
-
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+            .background(
+                LinearGradient(colors: [.blue, . white], startPoint: .topLeading, endPoint: .bottomTrailing)
+            )
+        }
     }
 }
 
+struct CityDetailsView_Previews: PreviewProvider {
+    static var previews: some View {
+        CityDetailsView()
+    }
+}

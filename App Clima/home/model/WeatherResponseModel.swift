@@ -6,9 +6,9 @@
 //
 
 import Foundation
-//Se creo los struc para obtener la información del JSON
+//Se creo los struct para obtener la información del servicio
 
-struct WeatherResponseDataModel : Decodable {
+struct WeatherResponseDataModel : Codable {
     let city: String
     let weather: [WeatherDataModel]   //Se coloco los [] ya que weather es un array
     let temperature: TemperatureDataModel
@@ -22,14 +22,14 @@ struct WeatherResponseDataModel : Decodable {
         case sun = "sys"
         case timezone
     }
-    struct SunModel: Decodable  {
+    struct SunModel: Codable  {
         let sunrise: Date
         let sunset: Date
     }
     
 }
 
-struct WeatherDataModel: Decodable {
+struct WeatherDataModel: Codable {
     let main: String
     let description: String
     let iconURLString: String
@@ -40,7 +40,7 @@ struct WeatherDataModel: Decodable {
         case iconURLString = "icon"
     }
 }
-struct TemperatureDataModel: Decodable {
+struct TemperatureDataModel: Codable {
     let currentTemperature: Double
     let minTemperature: Double
     let maxTemperature: Double
