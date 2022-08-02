@@ -23,8 +23,18 @@ struct WeatherHomeRowView: View {
                     .font(.title2)
                     .foregroundColor(Color.white)
                 Spacer()
+                
+                if let url = vm.customData?.iconURL ?? URL(string: "") {
+                    AsyncImage(url: url) { image in
+                        image
+                            .resizable()
+                            .frame(width: 40, height: 40)
+                    }placeholder: {
+                        ProgressView()
+                    }
+                }
                 //Te mostrara en la view los datos establecidos en el customData
-                Text(vm.customData? .currentTemperature ?? "")
+                Text(vm.customData?.currentTemperature ?? "")
                     .font(.largeTitle)
             }
             .padding()
