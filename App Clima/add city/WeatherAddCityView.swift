@@ -9,6 +9,8 @@ import SwiftUI
 
 struct WeatherAddCityView: View {
     
+    @Environment(\.dismiss) var dismiss
+    
     @Binding var cities : [String]
     
     @ObservedObject private var vm = WeatherAddCityView.ViewModel()
@@ -28,6 +30,9 @@ struct WeatherAddCityView: View {
                     if vm.city != "" {
                         vm.save()
                         cities = vm.readCities()
+                        DispatchQueue.main.async {
+                            dismiss()
+                        }
                     }
                     
                 

@@ -27,7 +27,7 @@ struct WeatherHomeRowView: View {
                     .font(.largeTitle)
             }
             .padding()
-            .background(LinearGradient(colors: [.yellow, .blue], startPoint: .topLeading, endPoint: .bottomTrailing)
+            .background(LinearGradient(colors: [.blue, .yellow], startPoint: .topLeading, endPoint: .bottomTrailing)
             )
             .clipShape(RoundedRectangle(cornerRadius: 25.0, style: .continuous))
         }

@@ -43,8 +43,8 @@ extension WeatherHomeView {
             }label: {
                 Image(systemName: "plus")
             }
-            Button {
-                
+            NavigationLink {
+                WeatherSettingView()
             }label: {
                 Image(systemName: "ellipsis")
             }

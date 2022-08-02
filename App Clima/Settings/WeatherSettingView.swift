@@ -10,26 +10,11 @@ import SwiftUI
 struct WeatherSettingView: View {
     
     @ObservedObject var vm = WeatherSettingView.ViewModel()
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         
         VStack {
-            HStack{
-                Spacer()
-                Button {
-                    vm.save()
-                } label : {
-                    Text("Done")
-                }
-            }
-            HStack {
-                Text("Setting")
-                    .font(.largeTitle)
-                    .foregroundColor(Color(UIColor.label))
-                Spacer()
-            }
-            .padding(.bottom)
-            
             HStack {
                 Text("Select Temperature Unit")
                     .foregroundColor(Color(UIColor.systemGray2))
@@ -47,6 +32,19 @@ struct WeatherSettingView: View {
                 
         }
         .padding()
+        .navigationTitle("Settings")
+        .toolbar(content: {
+            ToolbarItem(placement: .automatic) {
+                Button {
+                    vm.save()
+                    DispatchQueue.main.async {
+                        dismiss()
+                    }
+                } label : {
+                    Text("Done")
+                }
+            }
+        })
         .onAppear {
             vm.readUnits()
         }
