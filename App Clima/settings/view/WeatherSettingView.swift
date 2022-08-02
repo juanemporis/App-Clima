@@ -27,9 +27,9 @@ struct WeatherSettingView: View {
                 
             }
             .pickerStyle(SegmentedPickerStyle())
-
+            
             Spacer()
-                
+            
         }
         .padding()
         .navigationTitle("Settings")
@@ -48,9 +48,11 @@ struct WeatherSettingView: View {
         .onAppear {
             vm.readUnits()
         }
-}
-        
+        .background(
+            LinearGradient(colors: [.white, .blue], startPoint: .topLeading, endPoint: .bottomTrailing)
+        )
     }
+}
 
 struct WeatherSettingView_Previews: PreviewProvider {
     static var previews: some View {
@@ -58,7 +60,7 @@ struct WeatherSettingView_Previews: PreviewProvider {
             WeatherSettingView()
                 .padding()
                 .previewLayout(.sizeThatFits)
-                
+            
             
             WeatherSettingView()
                 .padding()
@@ -83,8 +85,8 @@ extension WeatherSettingView {
             
         }
         
-            func readUnits() {
-                let defaults = UserDefaults.standard
+        func readUnits() {
+            let defaults = UserDefaults.standard
             unit = defaults.string(forKey: "units") ?? "Celsius"
             
             debugPrint(unit)

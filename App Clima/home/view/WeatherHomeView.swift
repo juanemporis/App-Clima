@@ -17,13 +17,20 @@ struct WeatherHomeView : View{
         NavigationView {
             ScrollView {
                 ForEach (vm.cities , id: \.self) { item in
-                    
-                        WeatherHomeRowView (city: item)
-                            .padding(.top)
-                            .padding(.horizontal)
+                    WeatherHomeRowView (city: item, cities: $vm.cities)
+                        .padding(.top)
+                        .padding(.horizontal)
+                }
+                HStack {
+                    Spacer()
+                        .frame(width: .infinity, height: 1)
                 }
             }
             .navigationTitle("Climas")
+            .padding(20)
+            .background(
+                LinearGradient(colors: [.white, .blue], startPoint: .topLeading, endPoint: .bottomTrailing)
+            )
             .toolbar {
                 ToolbarItemGroup(placement: .automatic) {
                     header

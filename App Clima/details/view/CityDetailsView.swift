@@ -9,13 +9,17 @@ import SwiftUI
 
 struct CityDetailsView: View {
     
+    @Environment(\.dismiss) var dismiss
+    
+    @Binding var cities : [String]
+    
     var data: WeatherModel?
     
     var body: some View {
         ZStack {
             VStack {
-                Group{
-                    
+                Spacer()
+                Group {
                     Text(data?.city ?? "")
                         .foregroundColor(.white)
                         .font(.system(size: 70))
@@ -48,11 +52,7 @@ struct CityDetailsView: View {
                     .symbolRenderingMode(.multicolor)
                     .foregroundColor(.white)
                     
-                    Divider()
-                        .symbolRenderingMode(.multicolor)
-                        .foregroundColor(.white)
-                    
-                    HStack(spacing : 32){
+                    HStack(spacing: 32){
                         VStack {
                             Image(systemName: "sunrise.fill")
                                 .symbolRenderingMode(.multicolor)
@@ -64,32 +64,51 @@ struct CityDetailsView: View {
                             Text(data?.sunset ?? Date(), style: .time)
                         }
                     }
+                    .padding(.vertical)
                     .foregroundColor(.white)
-                    
-                    Divider()
-                        .symbolRenderingMode(.multicolor)
-                        .foregroundColor(.white)
-                    
-                    Divider()
-                        .foregroundColor(.white)
-                        .padding()
-                    
-                    Label(data?.humidity ?? "",systemImage: "humidity.fill")
-                        .symbolRenderingMode(.multicolor)
-                        .foregroundColor(.white)
-                    
-                    Spacer()
+                    HStack {
+                        Spacer()
+                        Label(data?.humidity ?? "",systemImage: "humidity.fill")
+                            .symbolRenderingMode(.multicolor)
+                            .foregroundColor(.white)
+                        Spacer()
+                    }
                 }
+                Spacer()
             }
             .background(
-                LinearGradient(colors: [.yellow, .blue], startPoint: .topLeading, endPoint: .bottomTrailing)
+                LinearGradient(colors: [.white, .blue], startPoint: .topLeading, endPoint: .bottomTrailing)
             )
+            
         }
+        .toolbar(content: {
+            ToolbarItem(placement: .automatic) {
+                Button {
+                    cities  = cities.filter { $0 != data?.city ?? "" }
+                    save(cities: cities)
+                    
+                    DispatchQueue.main.async {
+                        dismiss()
+                    }
+                } label : {
+                    Image(systemName: "trash.fill")
+                }
+            }
+        })
     }
 }
 
 struct CityDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        CityDetailsView()
+        CityDetailsView(cities: .constant([""]))
+    }
+}
+
+extension CityDetailsView {
+    
+    func save(cities: [String]) {
+        
+        let defaults = UserDefaults.standard
+        defaults.set(cities, forKey: "cities")
     }
 }

@@ -20,12 +20,12 @@ struct WeatherAddCityView: View {
         
         VStack {
             
-        
+            
             VStack {
                 TextField("Enter City", text: $vm.city)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
-                   
+                
                 Button {
                     if vm.city != "" {
                         vm.save()
@@ -35,26 +35,29 @@ struct WeatherAddCityView: View {
                         }
                     }
                     
-                
+                    
                 } label: {
-                Text("Save")
-                    .frame(width: 100, height: 48, alignment: .center)
+                    Text("Save")
+                        .frame(width: 100, height: 48, alignment: .center)
                         .background(CustomColor.blue)
                         .foregroundColor(.white)
                         .clipShape(RoundedRectangle(cornerRadius: 24.0, style: .continuous))
                         .padding(.horizontal)
                         .padding(.bottom)
-        }
-    }
-                        .background(CustomColor.background)
-                        .clipShape(RoundedRectangle(cornerRadius: 24.0, style:
-                                .continuous))
-                        .padding()
-                           
-                           Spacer()
+                }
             }
+            .background(CustomColor.background)
+            .clipShape(RoundedRectangle(cornerRadius: 24.0, style:
+                    .continuous))
+            .padding()
+            
+            Spacer()
+        }
+        .padding(32)
         .navigationBarTitle("Add City")
-    
+        .background(
+            LinearGradient(colors: [.white, .blue], startPoint: .topLeading, endPoint: .bottomTrailing)
+        )
     }
 }
 struct WeatherAddCityView_Previews: PreviewProvider {
@@ -71,31 +74,32 @@ struct WeatherAddCityView_Previews: PreviewProvider {
                 .background(.black)
                 .environment(\.colorScheme, .dark)
         }
-        
     }
+    
 }
+
 
 extension WeatherAddCityView {
     
-                        class  ViewModel : ObservableObject {
-                            
-                            @Published var city : String = ""
-                            
-                            func save() {
-                                
-                                var cities = readCities()
-                                cities.append(city)
-                                
-                                let defaults = UserDefaults.standard
-                                defaults.set(cities, forKey: "cities")
-                                
-                                debugPrint(readCities())
-                                
-                            }
-                            func readCities() -> [String] {
-                                let defaults = UserDefaults.standard
-                                return defaults.array(forKey: "cities") as? [String] ?? [String]()
-                            }
-                        }
+    class  ViewModel : ObservableObject {
+        
+        @Published var city : String = ""
+        
+        func save() {
+            
+            var cities = readCities()
+            cities.insert(city, at: 0)
+            
+            let defaults = UserDefaults.standard
+            defaults.set(cities, forKey: "cities")
+            
+            debugPrint(readCities())
+            
+        }
+        func readCities() -> [String] {
+            let defaults = UserDefaults.standard
+            return defaults.array(forKey: "cities") as? [String] ?? [String]()
+        }
+    }
 }
-                    
+

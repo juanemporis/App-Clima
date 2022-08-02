@@ -11,11 +11,12 @@ struct WeatherHomeRowView: View {
     
     var city : String?
     
+    @Binding var cities: [String]
     @ObservedObject var vm = WeatherHomeRowView.ViewModel()
     
     var body: some View {
         NavigationLink {
-            CityDetailsView(data: vm.customData)
+            CityDetailsView(cities: $cities, data: vm.customData)
         } label: {
             HStack {
                 Text(city ?? "Lima")
@@ -27,7 +28,7 @@ struct WeatherHomeRowView: View {
                     .font(.largeTitle)
             }
             .padding()
-            .background(LinearGradient(colors: [.blue, .yellow], startPoint: .topLeading, endPoint: .bottomTrailing)
+            .background(LinearGradient(colors: [.blue, .white], startPoint: .topLeading, endPoint: .bottomTrailing)
             )
             .clipShape(RoundedRectangle(cornerRadius: 25.0, style: .continuous))
         }
@@ -67,6 +68,6 @@ extension WeatherHomeRowView {
 
 struct WeatherHomeRowView_Previews: PreviewProvider {
     static var previews: some View {
-        WeatherHomeRowView()
+        WeatherHomeRowView(cities: .constant([""]))
     }
 }

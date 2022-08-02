@@ -112,7 +112,9 @@
 		C8EABD63289859190003B3E2 /* add city */ = {
 			isa = PBXGroup;
 			children = (
-				C8EABD612898319A0003B3E2 /* WeatherAddCityView.swift */,
+				C8EABD792898DC630003B3E2 /* view */,
+				C8EABD7A2898DC690003B3E2 /* worker */,
+				C8EABD7B2898DC730003B3E2 /* model */,
 			);
 			path = "add city";
 			sourceTree = "<group>";
@@ -129,7 +131,9 @@
 		C8EABD67289876160003B3E2 /* settings */ = {
 			isa = PBXGroup;
 			children = (
-				C87527812897A26700A741AC /* WeatherSettingView.swift */,
+				C8EABD762898DC380003B3E2 /* view */,
+				C8EABD772898DC3F0003B3E2 /* worker */,
+				C8EABD782898DC470003B3E2 /* model */,
 			);
 			path = settings;
 			sourceTree = "<group>";
@@ -186,6 +190,50 @@
 			sourceTree = "<group>";
 		};
 		C8EABD732898BE2A0003B3E2 /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		C8EABD762898DC380003B3E2 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				C87527812897A26700A741AC /* WeatherSettingView.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		C8EABD772898DC3F0003B3E2 /* worker */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = worker;
+			sourceTree = "<group>";
+		};
+		C8EABD782898DC470003B3E2 /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		C8EABD792898DC630003B3E2 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				C8EABD612898319A0003B3E2 /* WeatherAddCityView.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		C8EABD7A2898DC690003B3E2 /* worker */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = worker;
+			sourceTree = "<group>";
+		};
+		C8EABD7B2898DC730003B3E2 /* model */ = {
 			isa = PBXGroup;
 			children = (
 			);
