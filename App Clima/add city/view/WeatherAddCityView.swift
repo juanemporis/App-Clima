@@ -87,18 +87,18 @@ extension WeatherAddCityView {
         
         func save() {
             
-            var cities = readCities()
-            cities.insert(city, at: 0)
+            let worker = AddCityWorker()
             
-            let defaults = UserDefaults.standard
-            defaults.set(cities, forKey: "cities")
+            worker.save(city: city)
             
-            debugPrint(readCities())
-            
+            debugPrint(worker.retrieveCities())
         }
+        
         func readCities() -> [String] {
-            let defaults = UserDefaults.standard
-            return defaults.array(forKey: "cities") as? [String] ?? [String]()
+            
+            let worker = AddCityWorker()
+            
+            return worker.retrieveCities()
         }
     }
 }

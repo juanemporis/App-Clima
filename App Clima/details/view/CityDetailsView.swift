@@ -85,7 +85,7 @@ struct CityDetailsView: View {
             ToolbarItem(placement: .automatic) {
                 Button {
                     cities  = cities.filter { $0 != data?.city ?? "" }
-                    save(cities: cities)
+                    update(cities: cities)
                     
                     DispatchQueue.main.async {
                         dismiss()
@@ -106,9 +106,9 @@ struct CityDetailsView_Previews: PreviewProvider {
 
 extension CityDetailsView {
     
-    func save(cities: [String]) {
+    func update(cities: [String]) {
         
-        let defaults = UserDefaults.standard
-        defaults.set(cities, forKey: "cities")
+        let worker = CityDetailsWorker()
+        worker.update(cities: cities)
     }
 }

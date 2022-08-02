@@ -27,7 +27,6 @@ struct WeatherHomeView : View{
                 }
             }
             .navigationTitle("Climas")
-            .padding(20)
             .background(
                 LinearGradient(colors: [.white, .blue], startPoint: .topLeading, endPoint: .bottomTrailing)
             )

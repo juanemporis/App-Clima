@@ -55,22 +55,10 @@ extension WeatherHomeRowView {
         
         func load (city : String) {
             
-            let url = "http://api.openweathermap.org/data/2.5/weather"
+            let worker = WeatherWorker()
             
-            let parameters = [
-                "q": city,
-                "appid" : "71c3e78149e90edcb26b5c8bf57708fa",
-                "units": "metric",
-                "lang" : "es"
-            ]
-            APIClient.shared.get(url, parameters: parameters) {
-                (status : Int, response: WeatherResponseDataModel?) in
-                
-                guard let response = response else {
-                    return
-                }
-                self.customData = WeatherModelMapper()
-                    .mapDataModelToModel(dataModel: response)
+            worker.retriveDetails(of: city) { status, response in
+                self.customData = response
             }
         }
     }
