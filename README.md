@@ -6,7 +6,9 @@ Se inicio con el proyecto de la App de clima
 1.#Información General
 
 -La app se utiliza para saber el clima de cada país o ciudad, también te muestra la humedad la temperatura.
+
 -Se puede agregar países o ciudades y también te muestra un Settting para cambiar la temperatura a Celsius,Fahrenheit o Kelvin como también poder eliminar algún clima en especifico.
+
 -La app te muestra 4 vistas tanto el Home, el de añadir el Setting y la especificación del clima.
 
 2.#Función de la App
