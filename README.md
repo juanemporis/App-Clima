@@ -46,19 +46,27 @@ valores de la temperatura en celsius, farenheit y kelvin "
 3.#Tecnologias 
 
 -XCode 13.4.1
+
 -IOS 15+
+
 -SwiftUi
 
 4.#Instalacion
 
 -Para poder clonar el repositorio debemos ingresar a la ruta (https://github.com/juanemporis/App-Clima.git)
+
 -Tambien podemos usar la misma ruta para poder abrirlo desde mismo es xcode dando click en la opción CODE y dandole click en Open with XCode.
 
 5.#Dependencias
 
 -Se utilizo la API https://openweathermap.org/api
+
 -No se utilizo ninguna libreria externa y ninguna libreria para guardar los datos.
--Los datos fueron guardos en UserDefaults
--Se uso el patron de diseño MVVM
--Se agrego imagenes al AppIcon y tabla de colores
--Se en la carpeta framework una carpeta constant que almacenara los colores
+
+-Los datos fueron guardos en UserDefaults.
+
+-Se uso el patron de diseño MVVM.
+
+-Se agrego imagenes al AppIcon y tabla de colores.
+
+-Se en la carpeta framework una carpeta constant que almacenara los colores.
