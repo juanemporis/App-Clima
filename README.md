@@ -12,6 +12,8 @@ Se inicio con el proyecto de la App de clima
 2.#Función de la App
 
 -"La se iniciando dando click en el icono para ejecutar la app"
+
+
 <img width="325" alt="Captura de Pantalla 2022-08-02 a las 18 33 32" src="https://user-images.githubusercontent.com/89556060/182496519-b3a25d26-785c-432b-a6f1-490754ebd845.png">
 
 -"Una vez en el Home de la app tenemos diferente tipo de opciones una de ellas es agregar una ciudad y lo hacemos presionando en el simbolo +"
